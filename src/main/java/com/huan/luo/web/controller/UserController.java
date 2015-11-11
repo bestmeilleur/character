@@ -1,6 +1,8 @@
 package com.huan.luo.web.controller;
 
 import com.huan.luo.data.User;
+import com.huan.luo.web.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/{id}")
     public User view(@PathVariable("id") Long id) {
-        User user = new User();
-        user.setId(id);
-        user.setName("huan");
-        return user;
+        return userService.getUser(id);
     }
 
 
