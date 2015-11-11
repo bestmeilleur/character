@@ -1,6 +1,8 @@
 package com.huan.luo.web.service;
 
 import com.huan.luo.data.User;
+import com.huan.luo.web.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,14 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    public UserService() {
+    private UserDao userDao;
 
+    @Autowired
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     public User getUser(long id) {
-        User user = new User();
-        user.setId(id);
-        user.setName("huan");
-        return user;
+        return userDao.getUser(id);
     }
 }
