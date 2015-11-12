@@ -21,4 +21,8 @@ public class UserService {
     public User getUser(long id) {
         return userDao.getUser(id);
     }
+
+    public int insertUser(String name) {
+        return userDao.insertUser(name);
+    }
 }
