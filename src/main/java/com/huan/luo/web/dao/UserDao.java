@@ -21,7 +21,7 @@ public class UserDao extends JdbcDaoSupport {
 
     public int insertUser(String name) {
         JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
-        return jdbcTemplate.update("insert into user (name) values (" + name + ")");
+        return jdbcTemplate.update("insert into user (name) values ('" + name + "')");
     }
 
     public User getUser(long id) {
